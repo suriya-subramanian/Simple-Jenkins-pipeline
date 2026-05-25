@@ -28,6 +28,7 @@ pipeline {
         }       
         
     }
+}
     post {
         success {
             echo "Deployment successfull! The app is running on port 3000."
