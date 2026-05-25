@@ -4,10 +4,7 @@ pipeline {
     stages {
         stage('Checkout Stage') {
             steps {
-                sh '''
-                    #!/bin/bash
-                    chekout scm
-                '''
+                    checkout scm
             }
         }
         stage('Build Stage') {
