@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout Stage') {
             steps {
-                    checkout scm
+                checkout scm
             }
         }
         stage('Build Stage') {
