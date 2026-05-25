@@ -11,8 +11,8 @@ pipeline {
             steps {
                 script {
                     echo "Building the Docker image"
-                    sh "docker build -t python-app:1.0.0 ."
-                    sh "docker tag python-app:1.0.0 python-app:latest" 
+                    sh "sudo docker build -t python-app:1.0.0 ."
+                    sh "sudo docker tag python-app:1.0.0 python-app:latest" 
             }
         }
     }
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     echo "preparing to deploy..."
-                    sh  "docker run -d -p 3000:3000 --name python-api python-app:latest"
+                    sh  "sudo docker run -d -p 3000:3000 --name python-api python-app:latest"
             }
         }       
         
