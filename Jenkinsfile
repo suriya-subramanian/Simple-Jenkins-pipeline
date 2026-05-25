@@ -18,6 +18,7 @@ pipeline {
                     sh "docker tag python-app:1.0.0 python-app:latest" 
             }
         }
+    }
         stage('Deploy Stage') {
             steps {
                 script {
