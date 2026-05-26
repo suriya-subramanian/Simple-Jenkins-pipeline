@@ -21,6 +21,9 @@ spec:
         ports:
         - containerPort: 3000
         imagePullPolicy: Always
+        env:
+        - name: APP_VERSION
+          value: "REPLACE_VERSION"
 ---
 apiVersion: v1
 kind: Service

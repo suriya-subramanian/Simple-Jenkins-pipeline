@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from datetime import datetime, timezone
 import time
+import os
 
 app = FastAPI(title="App API")
 
@@ -85,4 +86,16 @@ async def get_health():
     """
     return {
         "status": "ok"
+    }
+
+@app.get("/version")
+async def get_version():
+    """
+    Shows the current application version.
+    Pulls dynamically from the environment variables set by Kubernetes.
+    """
+    app_version = os.getenv("APP_VERSION", "1.0.0")
+    return {
+        "app_name": "Python App API",
+        "version": app_version
     }
