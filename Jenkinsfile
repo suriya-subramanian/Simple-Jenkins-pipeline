@@ -60,7 +60,7 @@ pipeline {
                             
                             # Watch the rollout happen live!
                             # (Replace 'my-app-deployment' if your deployment is named differently)
-                            kubectl rollout status deployment/my-app-deployment -n app-deployment
+                            kubectl rollout status deployment/python-app-deployment -n app-deployment
                             
                             # Reset the file back to "REPLACE_VERSION" so Git tracking doesn't get messy
                             git checkout deployment.yaml
