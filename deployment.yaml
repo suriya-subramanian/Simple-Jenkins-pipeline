@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: python-app-container
-        image: python-app:latest
+        image: sursubra/python-app:latest
         ports:
         - containerPort: 3000
         imagePullPolicy: Never

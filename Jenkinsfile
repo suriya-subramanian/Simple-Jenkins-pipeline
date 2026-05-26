@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        DOCKER_IMAGE = "sursubra/python-app"
+    }
 
     stages {
         stage('Checkout Stage') {
