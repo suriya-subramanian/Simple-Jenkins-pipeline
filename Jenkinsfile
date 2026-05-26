@@ -24,7 +24,7 @@ pipeline {
                         sh '''
                             export KUBECONFIG=$KUBECONFIG_FILE
                             kubectl apply -f deployment.yaml
-                            kubectl rollout status deployment/my-app-deployment -n app-deployment
+                            kubectl rollout status deployment/python-app-deployment -n app-deployment
                         '''
                     }
                 }
