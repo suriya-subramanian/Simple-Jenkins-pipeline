@@ -17,6 +17,20 @@ pipeline {
             }
         }
     }
+        stage('Push Stage') {
+            steps {
+                script {
+                    echo "Pushing image to Docker Hub..."
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
+                        sh '''
+                        echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                        docker push python-app:1.0.0
+                        docker push python-app:latest
+                        '''
+                    }
+                }
+            }
+        }
         stage('Deploy Stage') {
             steps {
                 script {
