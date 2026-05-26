@@ -12,7 +12,8 @@ pipeline {
                 script {
                     echo "Building the Docker image"
                     sh "docker build -t python-app:1.0.0 ."
-                    sh "docker tag python-app:1.0.0 python-app:latest" 
+                    sh "docker tag python-app:1.0.0 python-app:latest"
+                    sh "minikube image load python-app:latest" 
             }
         }
     }
