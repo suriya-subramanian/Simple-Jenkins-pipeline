@@ -19,13 +19,19 @@ pipeline {
         stage('Deploy Stage') {
             steps {
                 script {
-                    echo "preparing to deploy..."
-                    sh  "docker run -d -p 3000:3000 --name python-api python-app:latest"
-            }
-        }       
+                    echo "preparing to deploy to Kubernetes..."
+                    withCredentials([file(credentialsId: 'k8s-kubeconfig', variable: 'KUBECONFIG_FILE')]) {
+                        sh '''
+                            export KUBECONFIG=$KUBECONFIG_FILE
+                            kubectl apply -f deployment.yaml
+                            kubectl rollout status deployment/my-app-deployment -n app-deployment
+                        '''
+                    }
+                }
+            }       
         
+        }
     }
-}
     post {
         success {
             echo "Deployment successfull! The app is running on port 3000."
