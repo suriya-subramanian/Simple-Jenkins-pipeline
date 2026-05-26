@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Remember to change this to your actual Docker Hub username!
-        DOCKER_IMAGE = "your-username/python-app" 
+        DOCKER_IMAGE = "sursubra/python-app" 
         
         // This automatically generates versions like 1.0.15 based on the Jenkins build number
         APP_VERSION = "1.0.${env.BUILD_NUMBER}" 
