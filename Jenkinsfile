@@ -53,7 +53,7 @@ pipeline {
                             sed -i "s|image: .*|image: ${DOCKER_IMAGE}:${APP_VERSION}|g" deployment.yaml
                             
                             # 2. Inject the new version number into the APP_VERSION environment variable
-                            sed -i "s|value: \"REPLACE_VERSION\"|value: \"${APP_VERSION}\"|g" deployment.yaml
+                            sed -i "s|REPLACE_VERSION|${APP_VERSION}|g" deployment.yaml
                             
                             # Apply the changes to the cluster
                             kubectl apply -f deployment.yaml
