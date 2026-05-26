@@ -14,8 +14,8 @@ pipeline {
             steps {
                 script {
                     echo "Building the Docker image"
-                    sh "docker build -t python-app:1.0.0 ."
-                    sh "docker tag python-app:1.0.0 python-app:latest" 
+                    sh "docker build -t ${DOCKER_IMAGE}:1.0.0 ."
+                    sh "docker tag ${DOCKER_IMAGE}:1.0.0 ${DOCKER_IMAGE}:latest" 
             }
         }
     }
@@ -26,8 +26,8 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                         sh '''
                         echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                        docker push python-app:1.0.0
-                        docker push python-app:latest
+                        docker push ${DOCKER_IMAGE}:1.0.0
+                        docker push ${DOCKER_IMAGE}:latest
                         '''
                     }
                 }
